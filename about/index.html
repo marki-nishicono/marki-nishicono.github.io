@@ -292,7 +292,7 @@
 
 <article class="about-content page-content mt-5">
   <div class="markdown-body">
-    <html><head></head><body><p>北京航空航天大学－工程力学系－动力学与控制实验室，本科毕业硕士在读，主要研究方向为多智能体控制与博弈论应用。<br>精通Matlab/Python/Adams等开发工具，擅长利用科学仿真库进行仿真模拟实验，爱好为嵌入式设备开发与边缘计算部署。<br>邮箱：<a href="/about/mailto:markibuaa@foxmail.com">markibuaa@foxmail.com</a>　欢迎同行同好致信交流。</p>
+    <html><head></head><body><p>北京航空航天大学－工程力学系－动力学与控制实验室，本科毕业硕士在读，主要研究方向为多智能体控制与博弈论应用。 精通Matlab/Python/Adams等开发工具，擅长利用科学仿真库进行仿真模拟实验，爱好为嵌入式设备开发与边缘计算部署。 邮箱：markibuaa@foxmail.com　欢迎同行同好致信交流。</p>
 </body></html>
   </div>
 
@@ -320,6 +320,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -475,6 +481,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
